@@ -5,7 +5,7 @@ export default function SearchProducts({ products, setSearchedProducts }) {
   const [productName, setProductName] = useState("");
 
   useEffect(() => {
-    if (productName.length !== 0) {
+    if (products && productName.length !== 0) {
       const filteredProducts =
         products &&
         products.filter(product =>

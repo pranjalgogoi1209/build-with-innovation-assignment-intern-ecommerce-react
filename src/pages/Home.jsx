@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import useProducts from "../useProducts";
 import SearchProducts from "../components/SearchProducts";
+import FilterProducts from "../components/FilterProducts";
 
 export default function Home() {
   const navigate = useNavigate();
   const { products, isLoading } = useProducts();
   const [userDetails, setUserDetails] = useState();
   const [searchedProducts, setSearchedProducts] = useState();
+  const [priceFilteredProducts, setPriceFilteredProducts] = useState();
 
   // getting userDetails from local host and storing it in userDetails state variable
   // if the userDetails not in local host then redirect to login page
@@ -37,25 +39,48 @@ export default function Home() {
     );
   };
 
+  // handleClear function
+  const handleClear = () => {
+    setSearchedProducts(undefined);
+    setPriceFilteredProducts(undefined);
+  };
   return (
     <HomeWrapper>
-      <SearchProducts
+      <FilterProducts
         products={products}
-        setSearchedProducts={setSearchedProducts}
+        setPriceFilteredProducts={setPriceFilteredProducts}
+        searchedProducts={searchedProducts}
       />
-      <div className="products">
-        {isLoading && <div>Loading... </div>}
-        {products &&
-          !searchedProducts &&
-          products.map(product => displayProducts(product))}
-        {searchedProducts &&
-          searchedProducts.map(product => displayProducts(product))}
+      <div className="main">
+        <SearchProducts
+          products={products}
+          setSearchedProducts={setSearchedProducts}
+        />
+        <span onClick={handleClear}>Clear filters</span>
+        <div className="products">
+          {isLoading && <div>Loading... </div>}
+          {products &&
+            !searchedProducts &&
+            !priceFilteredProducts &&
+            products.map(product => displayProducts(product))}
+
+          {searchedProducts &&
+            !priceFilteredProducts &&
+            searchedProducts.map(product => displayProducts(product))}
+
+          {priceFilteredProducts &&
+            priceFilteredProducts.map(product => displayProducts(product))}
+        </div>
       </div>
     </HomeWrapper>
   );
 }
 
 const HomeWrapper = styled.div`
+  display: flex;
+  .main {
+    width: 90vw;
+  }
   .products {
     display: flex;
     justify-content: space-between;
