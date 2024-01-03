@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
+  // Already login users cann't access login page
+  useEffect(() => {
+    if (localStorage.getItem("userDetails")) {
+      navigate("/");
+    }
+  }, [navigate]);
+
+  // post request
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(username, password);
     fetch("https://dummyjson.com/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -18,7 +27,13 @@ export default function Login() {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        if (data.message) {
+          console.log("login again");
+        } else {
+          console.log("successfully login");
+          localStorage.setItem("userDetails", JSON.stringify(data));
+          navigate("/");
+        }
       });
   };
 
