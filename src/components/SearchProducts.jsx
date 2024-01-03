@@ -12,8 +12,6 @@ export default function SearchProducts({ products, setSearchedProducts }) {
           product.title.toLowerCase().includes(productName.toLowerCase())
         );
       setSearchedProducts(filteredProducts);
-    } else {
-      setSearchedProducts(products);
     }
   }, [productName]);
 
