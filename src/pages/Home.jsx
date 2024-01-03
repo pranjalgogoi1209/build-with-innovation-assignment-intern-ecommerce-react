@@ -8,7 +8,9 @@ export default function Home() {
   const navigate = useNavigate();
   const products = useProducts();
   const [userDetails, setUserDetails] = useState();
+  const [searchedProducts, setSearchedProducts] = useState();
 
+  console.log(searchedProducts);
   // getting userDetails from local host and storing it in userDetails state variable
   // if the userDetails not in local host then redirect to login page
   useEffect(() => {
@@ -24,11 +26,14 @@ export default function Home() {
 
   return (
     <HomeWrapper>
-      <SearchProducts />
+      <SearchProducts
+        products={products}
+        setSearchedProducts={setSearchedProducts}
+      />
       <div className="products">
-        {products &&
-          products.map(product => (
-            <div className="single-product">
+        {searchedProducts &&
+          searchedProducts.map(product => (
+            <div className="single-product" key={product.id}>
               <img src={product.thumbnail} width={200} height={200} />
               <h2>{product.title}</h2>
               <p>{product.description}</p>
