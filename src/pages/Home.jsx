@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import useProducts from "../useProducts";
+import { Link, useNavigate } from "react-router-dom";
 import SearchProducts from "../components/SearchProducts";
 import FilterProducts from "../components/FilterProducts";
+import { useProductContext } from "../context/ProductsProvider";
 
 export default function Home() {
+  const { products, isLoading } = useProductContext();
   const navigate = useNavigate();
-  const { products, isLoading } = useProducts();
   const [userDetails, setUserDetails] = useState();
   const [searchedProducts, setSearchedProducts] = useState();
   const [priceFilteredProducts, setPriceFilteredProducts] = useState();
@@ -29,12 +29,14 @@ export default function Home() {
   const displayProducts = product => {
     return (
       <div className="single-product" key={product.id}>
-        <img src={product.thumbnail} width={200} height={200} />
-        <h2>{product.title}</h2>
-        <p>{product.description}</p>
-        <small>Price: {product.price}rs</small>
-        <br />
-        <small>Rating: {product.rating}</small>
+        <Link to={`/single-product/${product.id}`}>
+          <img src={product.thumbnail} width={200} height={200} />
+          <h2>{product.title}</h2>
+          <p>{product.description}</p>
+          <small>Price: {product.price}rs</small>
+          <br />
+          <small>Rating: {product.rating}</small>
+        </Link>
       </div>
     );
   };
@@ -44,6 +46,7 @@ export default function Home() {
     setSearchedProducts(undefined);
     setPriceFilteredProducts(undefined);
   };
+
   return (
     <HomeWrapper>
       <FilterProducts
