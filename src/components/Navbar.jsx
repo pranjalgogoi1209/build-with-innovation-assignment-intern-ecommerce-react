@@ -63,7 +63,7 @@ const NavbarWrapper = styled.header`
         text-decoration: none;
       }
       li {
-        font-size: 3vw;
+        font-size: 2.5vw;
         list-style-type: none;
         color: #f1f1f1;
         &:hover {
