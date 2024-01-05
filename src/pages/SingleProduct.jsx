@@ -71,7 +71,7 @@ const SingleProductWrapper = styled.div`
       .thumbnail {
         border-radius: 1vw;
         width: 60vw;
-        height: 40vh;
+        height: 50vh;
       }
       p {
         width: 60vw;
