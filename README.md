@@ -9,6 +9,7 @@
 <br/>
 <h2>How to run the code</h2>
 <ol>
+    <li>First terminal: Install node modules => npm install</li>
     <li>First terminal: Start app => npm run dev</li>
     <li>Second terminal: Start json server => npx json-server --watch ./data/db.json port 8000</li>
 </ol>
