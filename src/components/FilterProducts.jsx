@@ -34,31 +34,53 @@ export default function FilterProducts({
     <FilterProductsWrapper>
       <form onChange={e => setPriceRange(e.target.value)}>
         <div>
-          <label htmlFor="">
-            <input type="radio" name="filter" id="" value={"0-50"} /> 0 - 50
+          <label htmlFor="0-50">
+            <input type="radio" name="filter" id="0-50" value={"0-50"} /> 0 - 50
           </label>
         </div>
         <div>
-          <label htmlFor="">
-            <input type="radio" name="filter" id="" value={"51-100"} /> 51 - 100
+          <label htmlFor="51-100">
+            <input type="radio" name="filter" id="51-100" value={"51-100"} /> 51
+            - 100
           </label>
         </div>
         <div>
-          <label htmlFor="">
-            <input type="radio" name="filter" id="" value={"101-500"} /> 101 -
-            500
+          <label htmlFor="101-500">
+            <input type="radio" name="filter" id="101-500" value={"101-500"} />{" "}
+            101 - 500
           </label>
         </div>
         <div>
-          <label htmlFor="">
-            <input type="radio" name="filter" id="" value={"501-1000"} /> 501 -
-            1000
+          <label htmlFor="501-1000">
+            <input
+              type="radio"
+              name="filter"
+              id="501-1000"
+              value={"501-1000"}
+            />{" "}
+            501 - 1000
           </label>
         </div>
         <div>
-          <label htmlFor="">
-            <input type="radio" name="filter" id="" value={"1001-1500"} /> 1001
-            - 1500
+          <label htmlFor="1001-1500">
+            <input
+              type="radio"
+              name="filter"
+              id="1001-1500"
+              value={"1001-1500"}
+            />{" "}
+            1001 - 1500
+          </label>
+        </div>
+        <div>
+          <label htmlFor="1501-2000">
+            <input
+              type="radio"
+              name="filter"
+              id="1501-2000"
+              value={"1501-2000"}
+            />{" "}
+            1501 - 2000
           </label>
         </div>
       </form>
@@ -67,5 +89,15 @@ export default function FilterProducts({
 }
 
 const FilterProductsWrapper = styled.div`
-  width: 10vw;
+  width: 15vw;
+  form {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2vw;
+    gap: 1vw;
+    input,
+    label {
+      cursor: pointer;
+    }
+  }
 `;

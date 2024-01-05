@@ -29,6 +29,7 @@ export default function Login() {
       .then(data => {
         if (data.message) {
           console.log("login again");
+          alert("wrong username & password");
         } else {
           console.log("successfully login");
           localStorage.setItem("userDetails", JSON.stringify(data));
@@ -39,23 +40,67 @@ export default function Login() {
 
   return (
     <LoginWrapper>
-      <form onSubmit={handleSubmit}>
-        <input type="text" onChange={e => setUsername(e.target.value)} />
-        <input type="password" onChange={e => setPassword(e.target.value)} />
-        <button type="submit">Login</button>
-      </form>
+      <div className="Login">
+        <form onSubmit={handleSubmit}>
+          <h1>LOGIN</h1>
+          <input
+            type="text"
+            onChange={e => setUsername(e.target.value)}
+            placeholder="Enter your username"
+          />
+          <input
+            type="password"
+            onChange={e => setPassword(e.target.value)}
+            placeholder="Enter your password"
+          />
+          <button type="submit">Login</button>
+        </form>
+      </div>
     </LoginWrapper>
   );
 }
 
 const LoginWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  form {
+  width: 100vw;
+  height: 100vh;
+  .Login {
+    height: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 2vw;
-    padding: 2vw;
-    margin-top: 10vw;
+    justify-content: center;
+    align-items: flex-start;
+    form {
+      background-color: #d4dbeb;
+      color: #212121;
+      border-radius: 1vw;
+      border: 1px solid white;
+      display: flex;
+      flex-direction: column;
+      gap: 2vw;
+      padding: 2vw;
+      margin-top: 10vw;
+      input,
+      button {
+        width: 30vw;
+        border: none;
+        outline: none;
+        padding: 1.2vw;
+        border-radius: 1vw;
+        font-size: 1.3vw;
+        font-weight: bold;
+      }
+      input:hover,
+      button:hover {
+        box-shadow: 0 0 0.5vw #212121;
+      }
+      button {
+        cursor: pointer;
+        background-color: #212121;
+        color: #f1f1f1;
+      }
+      button:hover {
+        background-color: #d4dbeb;
+        color: #212121;
+      }
+    }
   }
 `;
