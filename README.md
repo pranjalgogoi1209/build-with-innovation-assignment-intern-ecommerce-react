@@ -1,8 +1,14 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h1>This is an E-commerce website build using React</h1>
+<h2>I used json-server for add to cart functionality</h2>
+<br/>
+<h2>Libraries used:</h2>
+<ul>
+    <li>react-router-dom</li>
+    <li>styled-components</li>
+</ul>
+<br/>
+<h2>How to run the code</h2>
+<ol>
+    <li>First terminal: Start app => npm run dev</li>
+    <li>Second terminal: Start json server => npx json-server --watch ./data/db.json port 8000</li>
+</ol>
